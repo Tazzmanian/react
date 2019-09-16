@@ -1,8 +1,8 @@
 console.log('App.js is running!')
 
 
-var name = 'tst'
-var list = {
+const name = 'tst'
+const list = {
     one: 'One',
     two: 'Two'
 }
@@ -20,7 +20,7 @@ function four(num) {
     }
 }
 // JSX - JavaScript XML
-var template = (
+const template = (
     <div>
         <h1>{name.toUpperCase()}</h1>
         <p>This is something new app.js!</p>
@@ -44,5 +44,5 @@ var template = (
         </ol>
     </div>
 );
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 ReactDOM.render(template, appRoot);
