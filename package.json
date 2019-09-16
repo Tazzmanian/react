@@ -1,6 +1,14 @@
 {
   "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "global": "^4.4.0",
     "lite-server": "^2.5.4"
-  }
+  },
+  "name": "react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Tazzmanian/react.git",
+  "author": "Teodor S. Todorov",
+  "license": "MIT"
 }
