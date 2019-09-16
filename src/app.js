@@ -1,14 +1,19 @@
 console.log('App.js is running!')
 
 
+var name = 'tst'
+var list = {
+    one: 'One',
+    two: 'Two'
+}
 // JSX - JavaScript XML
 var template = (
     <div>
-        <h1>LOL</h1>
+        <h1>{name.toUpperCase()}</h1>
         <p>This is something new app.js!</p>
         <ol>
-            <li>One</li>
-            <li>Two</li>
+            <li>{list.one}</li>
+            <li>{list.two}</li>
         </ol>
     </div>
 );
