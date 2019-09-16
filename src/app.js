@@ -49,17 +49,25 @@ const template = (
 let count = 0;
 const addOne = () => {
     count++;
-    console.log(count)
+    console.log(count);
+    render();
 }
-const removeOne = () => count--;
-const template2 = (
-    <div>
-        <h1>Count: {count}</h1>
-        <button id="plus" className="button" onClick={addOne}>+1</button>
-        <button id="minus" className="button" onClick={removeOne}>-1</button>
-    </div>
-);
+const minusOne = () => {
+    count--;
+    render();
+}
 
 
-const appRoot = document.getElementById('app');
-ReactDOM.render(template2, appRoot);
+const render = () => {
+    const template2 = (
+        <div>
+            <h1>Count: {count}</h1>
+            <button id="plus" className="button" onClick={addOne}>+1</button>
+            <button id="minus" className="button" onClick={minusOne}>-1</button>
+        </div>
+    );
+    const appRoot = document.getElementById('app');
+    ReactDOM.render(template2, appRoot);
+}
+
+render();
