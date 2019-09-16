@@ -59,6 +59,10 @@ const minusOne = () => {
 
 const options = [];
 
+const getOptions = () => {
+    return options.map(x => <li key={x}>{x}</li>);
+}
+
 const onFormSubmit = (event) => {
     event.preventDefault();
     const option = event.target.elements.option.value;
@@ -76,6 +80,9 @@ const render = () => {
             <h1>Count: {count}</h1>
             <button id="plus" className="button" onClick={addOne}>+1</button>
             <button id="minus" className="button" onClick={minusOne}>-1</button>
+            <ol>
+                {getOptions()}
+            </ol>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"/>
                 <button>Add Option</button>
