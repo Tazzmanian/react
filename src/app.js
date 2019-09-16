@@ -57,6 +57,18 @@ const minusOne = () => {
     render();
 }
 
+const options = [];
+
+const onFormSubmit = (event) => {
+    event.preventDefault();
+    const option = event.target.elements.option.value;
+    if (!option) {
+        return;
+    }
+    options.push(option);
+    event.target.elements.option.value = '';
+    render();
+}
 
 const render = () => {
     const template2 = (
@@ -64,6 +76,11 @@ const render = () => {
             <h1>Count: {count}</h1>
             <button id="plus" className="button" onClick={addOne}>+1</button>
             <button id="minus" className="button" onClick={minusOne}>-1</button>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option"/>
+                <button>Add Option</button>
+            </form>
+            <p>{options.length}</p>
         </div>
     );
     const appRoot = document.getElementById('app');
