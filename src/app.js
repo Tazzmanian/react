@@ -6,15 +6,51 @@ const obj = {
 }
 
 class IndecisionApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: 'Indecision',
+            subTitle: 'subTitle',
+            options: [1, 2, 3]
+        }
+        this.hasOptions = this.hasOptions.bind(this);
+        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+        this.handlePick = this.handlePick.bind(this);
+    }
+
+    handleDeleteOptions() {
+        this.setState(() => {
+            return {
+                options: []
+            };
+        });
+    }
+
+    handlePick() {
+        alert('pick');
+        // this.setState(() => {
+        //     return {
+
+        //     }
+        // });
+    }
+
+    hasOptions() {
+        return this.state.options.length > 0;
+    }
+
     render() {
-        const title = 'Indecision';
-        const subTitle = 'subIndecision';
-        const options = [1, 2, 3];
         return (
             <div>
-                <Header title={title} subTitle={subTitle}/>
-                <Action />
-                <Options options={options}/>
+                <Header title={this.state.title} subTitle={this.state.subTitle}/>
+                <Action 
+                    hasOptions={this.state.options.length > 0}
+                    handlePick={this.handlePick}
+                />
+                <Options 
+                    options={this.state.options}
+                    handleDeleteOptions={this.handleDeleteOptions}
+                />
                 <AddOption />
             </div>
         );
@@ -35,14 +71,14 @@ class Header extends React.Component {
 
 class Action extends React.Component {
 
-    handlePick() {
-        alert('Handle Pick');
-    }
-
     render() {
         return (
             <div>
-                <button onClick={this.handlePick}>What should I do?</button>
+                <button 
+                    onClick={this.props.handlePick} 
+                    disabled={!this.props.hasOptions}>
+                        What should I do?
+                </button>
             </div>
         );
     }
@@ -73,22 +109,11 @@ class AddOption extends React.Component {
 
 class Options extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.removeAll = this.removeAll.bind(this);
-    }
-
-    removeAll() {
-        this.props.options.splice(0,this.props.options.length);
-        console.log(this.props.options);
-        this.render();
-    }
-
     render() {
         const options = this.props.options;
         return (
             <div>
-                <button onClick={this.removeAll}>Remove all</button>
+                <button onClick={this.props.handleDeleteOptions}>Remove all</button>
                 <p>Options ({options.length}):</p>
                 {
                     options.map(x => <Option key={x} option={x} />)
