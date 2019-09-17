@@ -1,7 +1,8 @@
-import {square, add} from './util';
+import substractAlias, {square, add} from './util';
 console.log('app is runnung');
 console.log(square(5));
 console.log(add(5,1));
+console.log(substractAlias(5,1));
 
 // const obj = {
 //     name: 've',
