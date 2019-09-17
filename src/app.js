@@ -1,8 +1,14 @@
 import substractAlias, {square, add} from './util';
+import validator from 'validator';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 console.log('app is runnung');
 console.log(square(5));
 console.log(add(5,1));
 console.log(substractAlias(5,1));
+console.log(validator.isEmail('as'));
+console.log(validator.isEmail('asd@abv.bg'));
 
 // const obj = {
 //     name: 've',

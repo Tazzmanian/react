@@ -6,6 +6,9 @@
     "babel-preset-react": "^6.24.1",
     "global": "^4.4.0",
     "lite-server": "^2.5.4",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "validator": "^11.1.0",
     "webpack": "^4.40.2"
   },
   "name": "react",
