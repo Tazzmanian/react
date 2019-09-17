@@ -20,6 +20,22 @@ class IndecisionApp extends React.Component {
         this.handleDeleteOption = this.handleDeleteOption.bind(this);
     }
 
+    // componentWillMount() {
+    //     console.log('will mount');
+    // }
+
+    componentDidMount() {
+        console.log('did mount');
+    }
+
+    componentDidUpdate() {
+        console.log('update');
+    }
+
+    componentWillUnmount() {
+        console.log('unmount');
+    }
+
     handleAddOptions(option) {
         if (!option) {
             return 'Enter valid value';
