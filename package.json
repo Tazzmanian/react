@@ -5,12 +5,21 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "global": "^4.4.0",
-    "lite-server": "^2.5.4"
+    "lite-server": "^2.5.4",
+    "webpack": "^4.40.2"
   },
   "name": "react",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/Tazzmanian/react.git",
   "author": "Teodor S. Todorov",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "serve": "lite-server --baseDir=public",
+    "build": "webpack",
+    "build-bible": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.9"
+  }
 }
