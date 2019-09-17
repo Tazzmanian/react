@@ -79,6 +79,10 @@ const Header = (props) => {
     );
 };
 
+Header.defaultProps = {
+    title: 'Default Title'
+}
+
 const Action = (props) => {
     return (
         <div>
