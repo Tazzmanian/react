@@ -10,6 +10,10 @@ console.log(substractAlias(5,1));
 console.log(validator.isEmail('as'));
 console.log(validator.isEmail('asd@abv.bg'));
 
+// const template = React.createElement('p', {}, 'test 123');
+const template = <p>fasdfasd</p>
+ReactDOM.render(template, document.getElementById('app'));
+
 // const obj = {
 //     name: 've',
 //     getName() {
@@ -48,7 +52,7 @@ console.log(validator.isEmail('asd@abv.bg'));
 //         if(prevState.options.length !== this.state.options.length) {
 //             const json = JSON.stringify(this.state.options);
 //             localStorage.setItem('options', json);
-//             console.log('save data');    
+//             console.log('save data');
 //         }
 //         console.log('update');
 //     }
@@ -91,16 +95,16 @@ console.log(validator.isEmail('asd@abv.bg'));
 //         return (
 //             <div>
 //                 <Header title={this.state.title} subTitle={this.state.subTitle}/>
-//                 <Action 
+//                 <Action
 //                     hasOptions={this.state.options.length > 0}
 //                     handlePick={this.handlePick}
 //                 />
-//                 <Options 
+//                 <Options
 //                     options={this.state.options}
 //                     handleDeleteOptions={this.handleDeleteOptions}
 //                     handleDeleteOption={this.handleDeleteOption}
 //                 />
-//                 <AddOption 
+//                 <AddOption
 //                     handleAddOptions={this.handleAddOptions}
 //                 />
 //             </div>
@@ -124,8 +128,8 @@ console.log(validator.isEmail('asd@abv.bg'));
 // const Action = (props) => {
 //     return (
 //         <div>
-//             <button 
-//                 onClick={props.handlePick} 
+//             <button
+//                 onClick={props.handlePick}
 //                 disabled={!props.hasOptions}>
 //                     What should I do?
 //             </button>
@@ -171,11 +175,11 @@ console.log(validator.isEmail('asd@abv.bg'));
 //             <p>Options ({props.options.length}):</p>
 //             {
 //                 props.options.map(x => (
-//                     <Option 
-//                         key={x} 
-//                         option={x} 
+//                     <Option
+//                         key={x}
+//                         option={x}
 //                         handleDeleteOption={props.handleDeleteOption}
-//                     /> 
+//                     />
 //                 ))
 //             }
 //         </div>
@@ -186,7 +190,7 @@ console.log(validator.isEmail('asd@abv.bg'));
 //     return (
 //         <div>
 //             Option Component is {props.option}
-//             <button 
+//             <button
 //                 onClick={(e) => {
 //                     props.handleDeleteOption(props.option)
 //                 }}
