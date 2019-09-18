@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     entry: './src/app.js',
     mode: 'development',
-    watch: true,
+    watch: false,
     watchOptions: {
         aggregateTimeout: 300,
         poll: 1000
@@ -21,5 +21,9 @@ module.exports = {
             }
         ]
     },
-    devtool: 'cheap-module-eval-source-map'
+    devtool: 'cheap-module-eval-source-map',
+    devServer: {
+        port: 80,
+        contentBase: path.join(__dirname, 'public')
+    }
 };
