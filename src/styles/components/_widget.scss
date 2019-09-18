@@ -26,3 +26,9 @@
     color: $off-white;
     border-bottom: .1rem solid lighten($light-blue, 10%);
 }
+
+@media (max-width: $desktop-breakpoint) {
+    .widget {
+        margin-bottom: $m-size;
+    }
+}

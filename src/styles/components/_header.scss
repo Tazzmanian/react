@@ -4,7 +4,6 @@
     margin-bottom: $xl-size;
     padding: $m-size 0;
     color: white;
-
 }
 
 // BEM block element modifier
@@ -18,4 +17,10 @@
     margin: 0;
     font-weight: 500;
     color: $off-white;
+}
+
+@media (max-width: $desktop-breakpoint) {
+    .header {
+        margin-bottom: $m-size;
+    }
 }
