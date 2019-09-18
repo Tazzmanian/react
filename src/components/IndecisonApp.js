@@ -7,21 +7,14 @@ import Options from './Options';
 
 
 export default class IndecisionApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: 'Indecision',
-            subTitle: 'subTitle',
-            options: [1, 2, 3]
-        }
-        this.hasOptions = this.hasOptions.bind(this);
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handlePick = this.handlePick.bind(this);
-        this.handleAddOptions = this.handleAddOptions.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
+
+    state = {
+        title: 'Indecision',
+        subTitle: 'subTitle',
+        options: [1, 2, 3]
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         try {
             const options = JSON.parse(localStorage.getItem('options'));
             if(options) {
@@ -33,7 +26,7 @@ export default class IndecisionApp extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate = (prevProps, prevState) => {
         if(prevState.options.length !== this.state.options.length) {
             const json = JSON.stringify(this.state.options);
             localStorage.setItem('options', json);
@@ -42,11 +35,11 @@ export default class IndecisionApp extends React.Component {
         console.log('update');
     }
 
-    componentWillUnmount() {
+    componentWillUnmount = () => {
         console.log('unmount');
     }
 
-    handleAddOptions(option) {
+    handleAddOptions = (option) => {
         if (!option) {
             return 'Enter valid value';
         } else if(this.state.options.includes(option)) {
@@ -58,21 +51,21 @@ export default class IndecisionApp extends React.Component {
         }));
     }
 
-    handleDeleteOption(option) {
+    handleDeleteOption = (option) => {
         this.setState((prevState) => ({
             options: prevState.options.filter(x => x !== option)
         }));
     }
 
-    handleDeleteOptions() {
+    handleDeleteOptions = () => {
         this.setState(() => ({ options: [] }));
     }
 
-    handlePick() {
+    handlePick = () => {
         alert('pick');
     }
 
-    hasOptions() {
+    hasOptions = () => {
         return this.state.options.length > 0;
     }
 
