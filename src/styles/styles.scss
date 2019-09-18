@@ -1,5 +1,2 @@
-$color: blue;
-
-* {
-    color: $color;
-}
+@import 'base/base';
+@import 'components/header';
