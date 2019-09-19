@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route } from 'react-router-dom';
+import {BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './styles/styles.scss';
 
@@ -16,14 +16,33 @@ const AddExpensePage = () => (
     </div>
 );
 
+const EditExpensePage = () => (
+    <div>
+        Edit page
+    </div>
+);
+
+const HelpExpensePage = () => (
+    <div>
+        Help page
+    </div>
+);
+
+const NotFoundExpensePage = () => (
+    <div>
+        Page Not Found 404!
+    </div>
+);
+
 const routes = (
     <BrowserRouter>
-        <div>
+        <Switch>
             <Route path="/" component={ExpenseDashboardPage} exact={true}/>
             <Route path="/create" component={AddExpensePage} />
-            <Route path="/edit" component={AddExpensePage} />
-            <Route path="/help" component={AddExpensePage} />
-        </div>
+            <Route path="/edit" component={EditExpensePage} />
+            <Route path="/help" component={HelpExpensePage} />
+            <Route component={NotFoundExpensePage} />
+        </Switch>
     </BrowserRouter>
 );
 
