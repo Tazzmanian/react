@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default class App extends Component {
 
-  state = {
-    placeName: ''
+  state: AppState = {
+    placeName: '',
+    places: [1]
   }
 
   placeNameChangeHandler = (val) => {
@@ -13,15 +14,40 @@ export default class App extends Component {
     });
   }
 
+  placeSubmitHandler = () => {
+    if (this.state.placeName.trim() === '') {
+      return;
+    }
+
+
+    this.setState(prevState => {
+      const prev = prevState as AppState;
+      return {
+        places: prev.places.concat(this.state.placeName)
+      }
+    });
+  }
+
   render() {
+    const placesOutput = this.state.places.map((place, index) => <Text key={index}>{place}</Text>);
     return (
       <View style={styles.container}>
         <Text>Open up App.tsx to start working on your app!sdafsdf</Text>
-        <TextInput
-          style={{width: 300, borderColor: "black", borderWidth: 1}}
-          placeholder="An ...."
-          value={this.state.placeName}
-          onChangeText={this.placeNameChangeHandler} />
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.placeInput}
+            placeholder="An ...."
+            value={this.state.placeName}
+            onChangeText={this.placeNameChangeHandler} />
+          <Button
+            style={styles.placeBtn}
+            title="ADD"
+            onPress={this.placeSubmitHandler}
+          />
+        </View>
+        <View>
+          {placesOutput}
+        </View>
       </View>
     );
   }
@@ -35,4 +61,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
+  inputContainer: {
+    // flex: 1,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    // backgroundColor: "red"
+  },
+  placeInput: {
+    width: "70%",
+    borderWidth: 1
+  },
+  placeBtn: {
+    // width: "30%"
+  }
 });
+
+interface AppState {
+  placeName: string;
+  places: Array<string>;
+}
