@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import ListItem from './src/components/ListItem/ListItem';
+import { StyleSheet, View } from 'react-native';
 import ListItems from './src/components/ListItems/ListItems';
 import InputComponent from './src/components/InputComponent/InputComponent';
 
