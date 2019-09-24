@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import ListItems from './src/components/ListItems/ListItems';
 import InputComponent from './src/components/InputComponent/InputComponent';
+import imagePlace from './src/assets/1.jpg';
 
 export default class App extends Component {
 
   state: AppState = {
     placeName: '',
-    places: []
+    places: [],
+    image: null
   }
 
   placeNameChangeHandler = (val) => {
@@ -27,7 +29,8 @@ export default class App extends Component {
       return {
         places: prev.places.concat({
           key: Math.random(),
-          value: this.state.placeName
+          value: this.state.placeName,
+          image: imagePlace
         }),
         placeName: ''
       }
@@ -72,7 +75,11 @@ const styles = StyleSheet.create({
   }
 });
 
-interface AppState {
-  placeName: string;
-  places: Array<{key: number, value: string}>;
+export interface AppState {
+  placeName?: string;
+  places?: Array<{key: number, value: string}>;
+  image?: any;
+  placeNameChangeHandler?: Function;
+  placeSubmitHandler?: Function;
+  onItemDeleted?: Function;
 }

@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleSheet, FlatList } from "react-native";
 import ListItem from "../ListItem/ListItem";
+import { AppState } from "../../../App";
 
-const ListItems = (props) => {
+const ListItems = (props: AppState) => {
 
     return (
         <FlatList
@@ -11,6 +12,7 @@ const ListItems = (props) => {
             renderItem={(info) => (
                 <ListItem
                     placeName={info.item.value}
+                    placeImage={info.item.image}
                     onItemPressed={() => {
                         props.onItemDeleted(info.item.key);
                     }}
