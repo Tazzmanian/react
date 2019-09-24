@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import ListItems from './src/components/ListItems/ListItems';
 import InputComponent from './src/components/InputComponent/InputComponent';
-import imagePlace from './src/assets/1.jpg';
+// import imagePlace from './src/assets/1.jpg';
 
 export default class App extends Component {
 
@@ -30,7 +30,9 @@ export default class App extends Component {
         places: prev.places.concat({
           key: Math.random(),
           value: this.state.placeName,
-          image: imagePlace
+          image: {
+            uri: 'https://drive.google.com/open?id=1Cc0mfzBEUD4IOQx4d5D4z4_Em5r3xemA'
+          }
         }),
         placeName: ''
       }
