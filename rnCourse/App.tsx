@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import ListItems from './src/components/ListItems/ListItems';
 import InputComponent from './src/components/InputComponent/InputComponent';
+import PlaceDetail from './src/components/PlaceDetail/PlaceDetail';
 // import imagePlace from './src/assets/1.jpg';
 
 export default class App extends Component {
@@ -9,7 +10,8 @@ export default class App extends Component {
   state: AppState = {
     placeName: '',
     places: [],
-    image: null
+    image: null,
+    selectedPlace: null
   }
 
   placeNameChangeHandler = (val) => {
@@ -28,10 +30,10 @@ export default class App extends Component {
       const prev = prevState as AppState;
       return {
         places: prev.places.concat({
-          key: Math.random(),
+          key: Math.random().toString(),
           value: this.state.placeName,
           image: {
-            uri: 'https://drive.google.com/open?id=1Cc0mfzBEUD4IOQx4d5D4z4_Em5r3xemA'
+            uri: 'ur'
           }
         }),
         placeName: ''
@@ -39,19 +41,40 @@ export default class App extends Component {
     });
   }
 
-  onItemDeleted = (key) => {
+  onItemSelectedHandler = (key) => {
+    this.setState(prevState => {
+      const prev = prevState as AppState;
+      return {
+        selectedPlace: {...prev.places.find(x => x.key === key) }
+      };
+    });
+  }
+
+  onItemDeleteHandler = (key) => {
     this.setState(prevState => {
       const prev = prevState as AppState;
       // prev.places.splice(index, 1);
       return {
-        places: prev.places.filter( (place) => place.key !== key )
+        places: prev.places.filter( (place) => place.key !== prev.selectedPlace.key ),
+        selectedPlace: null
       }
+    });
+  }
+
+  onCloseModalHandler = () => {
+    this.setState({
+        selectedPlace: null
     });
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <PlaceDetail
+          selectedPlace={this.state.selectedPlace}
+          onItemDeleted={this.onItemDeleteHandler}
+          onCloseModal={this.onCloseModalHandler}
+        />
         <InputComponent
           placeName={this.state.placeName}
           placeNameChangeHandler={this.placeNameChangeHandler}
@@ -60,7 +83,7 @@ export default class App extends Component {
         />
         <ListItems
           places={this.state.places}
-          onItemDeleted={this.onItemDeleted}
+          onItemSelected={this.onItemSelectedHandler}
         />
       </View>
     );
@@ -79,9 +102,10 @@ const styles = StyleSheet.create({
 
 export interface AppState {
   placeName?: string;
-  places?: Array<{key: number, value: string}>;
+  places?: Array<{key: string, value: string}>;
   image?: any;
   placeNameChangeHandler?: Function;
   placeSubmitHandler?: Function;
   onItemDeleted?: Function;
+  selectedPlace?: any;
 }
