@@ -33,7 +33,7 @@ export default class App extends Component {
           key: Math.random().toString(),
           value: this.state.placeName,
           image: {
-            uri: 'ur'
+            uri: 'uri'
           }
         }),
         placeName: ''
@@ -102,10 +102,16 @@ const styles = StyleSheet.create({
 
 export interface AppState {
   placeName?: string;
-  places?: Array<{key: string, value: string}>;
+  places?: Array<Place>;
   image?: any;
   placeNameChangeHandler?: Function;
   placeSubmitHandler?: Function;
   onItemDeleted?: Function;
-  selectedPlace?: any;
+  selectedPlace?: Place;
+}
+
+interface Place {
+  key: string;
+  value: string;
+  image?: any;
 }
