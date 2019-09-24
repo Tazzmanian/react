@@ -31,6 +31,16 @@ export default class App extends Component {
     });
   }
 
+  onItemDeleted = (index) => {
+    this.setState(prevState => {
+      const prev = prevState as AppState;
+      // prev.places.splice(index, 1);
+      return {
+        places: prev.places.filter( (place, i) => i !== index )
+      }
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -38,8 +48,12 @@ export default class App extends Component {
           placeName={this.state.placeName}
           placeNameChangeHandler={this.placeNameChangeHandler}
           placeSubmitHandler={this.placeSubmitHandler}
+
         />
-        <ListItems places={this.state.places} />
+        <ListItems
+          places={this.state.places}
+          onItemDeleted={this.onItemDeleted}
+        />
       </View>
     );
   }

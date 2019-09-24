@@ -9,7 +9,7 @@ const ListItems = (props) => {
                 key={index}
                 placeName={place}
                 onItemPressed={() => {
-                    alert(`Item pressed: ${index} ${place}`)
+                    props.onItemDeleted(index);
                 }}
             />
         );
