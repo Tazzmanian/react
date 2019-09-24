@@ -25,18 +25,21 @@ export default class App extends Component {
     this.setState(prevState => {
       const prev = prevState as AppState;
       return {
-        places: prev.places.concat(this.state.placeName),
+        places: prev.places.concat({
+          key: Math.random(),
+          value: this.state.placeName
+        }),
         placeName: ''
       }
     });
   }
 
-  onItemDeleted = (index) => {
+  onItemDeleted = (key) => {
     this.setState(prevState => {
       const prev = prevState as AppState;
       // prev.places.splice(index, 1);
       return {
-        places: prev.places.filter( (place, i) => i !== index )
+        places: prev.places.filter( (place) => place.key !== key )
       }
     });
   }
@@ -71,5 +74,5 @@ const styles = StyleSheet.create({
 
 interface AppState {
   placeName: string;
-  places: Array<string>;
+  places: Array<{key: number, value: string}>;
 }
